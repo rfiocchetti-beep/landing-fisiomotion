@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fisiomotion - Prenota la tua Valutazione</title>
+  <style>
+    body {
+      margin:0;
+      font-family: 'Arial', sans-serif;
+      background: #f0f4f8;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+    header h1 {
+      color: #059aab;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 18px;
+      color: #444;
+    }
+    section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+    h2 {
+      color: #5daa01;
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+    ul {
+      list-style: disc inside;
+      margin-bottom: 30px;
+    }
+    li {
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+    .btn-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .btn {
+      display: inline-block;
+      background: #04d2da;
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(4,210,218,0.18);
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background: #03b9c0;
+    }
+    .form-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 30px auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    button {
+      background: #059aab;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    button:hover {
+      background: #048090;
+    }
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Allevia Il Corpo Da Tensioni E Dolori Muscolari</h1>
+  <p>Con un Approccio Naturale e Personalizzato – <strong>49€ anziché 80€</strong></p>
+  <div class="btn-container">
+    <a href="#form" class="btn">VOGLIO IL BUONO</a>
+  </div>
+</header>
+
+<section>
+  <h2>Cosa Otterrai Con la Prima Visita</h2>
+  <ul>
+    <li><strong>Anamnesi:</strong> Una conversazione iniziale per conoscere la tua storia clinica e i tuoi obiettivi di salute.</li>
+    <li><strong>Valutazione:</strong> Analisi posturale statica e dinamica, con test ortopedici e osteopatici.</li>
+    <li><strong>Trattamento osteopatico:</strong> Approccio manuale per l’armonia del corpo.</li>
+    <li><strong>Bonus:</strong> Olio Ozonizzato antinfiammatorio.</li>
+  </ul>
+
+  <h2>Compila Il Modulo E Ricevi L'Offerta</h2>
+  <div id="form" class="form-box">
+    <form action="https://api.emailjs.com/api/v1.0/email/send" method="POST" id="contact-form">
+      <input type="text" name="nome" placeholder="Il tuo nome" required />
+      <input type="tel" name="telefono" placeholder="Il tuo numero di telefono" required />
+      <input type="email" name="email" placeholder="La tua email" required />
+      <textarea name="messaggio" placeholder="Il tuo messaggio" required></textarea>
+      <button type="submit">VOGLIO IL BUONO</button>
+    </form>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Riccardo Fiocchetti - Tutti i diritti riservati</footer>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){ emailjs.init("NPqLkH-WtLNXHt9mV"); })();
+
+  document.getElementById('contact-form').addEventListener('submit', function(event){
+    event.preventDefault();
+    emailjs.sendForm('service_fzlggc1','template_061fhg7', this)
+      .then(function(){ window.location.href = "grazie.html"; },
+            function(err){ alert("Errore nell'invio. Riprovare più tardi."); });
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
